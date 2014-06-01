@@ -2,6 +2,18 @@
 <html>
 <body>
 <h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+<?php
+$file = fopen("words.csv","r");//4815
+while(! feof($file))
+{
+	$w = fgetcsv($file)[0];
+	$m = fgetcsv($file)[1];
+	//echo '{';
+	echo $w.': '.$m.'<br/>';
+}
+fclose($file);
+?>
+
 </body>
 </html>
