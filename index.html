@@ -1,19 +1,139 @@
-<!DOCTYPE html>
-<html>
-<body>
-<h1>Hello World</h1>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>See through 'C'</title>
+		<meta name="description" content="Adesh Shah: 'C' programs">
+		<meta name="keywords" content="Adesh,C,C++">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="icon" href="pictures/favicon.ico" type="image/x-icon"/>
+		<link rel="shortcut icon" href="pictures/favicon.ico" type="image/x-icon"/>
+		<style>
+			html{
+				cursor:crosshair;
+				margin:0; 
+				padding:0; 
+				color:#999;
+			}
 
-<?php
-$file = fopen("words.csv","r");//4815
-while(! feof($file))
-{
-	$w = fgetcsv($file)[0];
-	$m = fgetcsv($file)[1];
-	//echo '{';
-	echo $w.': '.$m.'<br/>';
-}
-fclose($file);
-?>
+			body { 
+				background-color:#fff; 
+				font-family: arial, sans-serif; 
+				font-size:13px; 
+				margin:0; 
+				padding:0; 
+				overflow:auto;
+				cursor:crosshair;
+				color:#999;
+			}
 
+			a{
+				color:#999;
+				text-decoration: none;
+			}
+
+			a:hover{
+				color:#000;
+			}
+
+			#header{ 
+				display:none;
+			}
+
+			#leftcolumn{ 
+				position: relative; 
+				width: 180px; 
+				padding: 0px; 
+				overflow:hidden;  
+				border-right: 0px #999 dotted; 
+			}
+
+			#leftcolumn ul{  
+				list-style:none;
+			}
+
+			#leftcolumn ul li{ 
+				text-align: right;
+				line-height: normal;
+				margin-bottom: 5px;
+				margin-right:5px;
+				text-transform: uppercase; 
+			}
+
+			#leftcolumn ul li a{ 
+				display: block;
+				font-size: 12px; 
+				text-transform: uppercase;
+			}
+
+			#rightcolumn{
+				position: absolute;
+				top:0px; left:180px;
+				padding-left: 12px;
+				padding-top: 5px;
+				border-left: 1px #999 dotted;
+
+			}
+
+			#rightcolumn li{ 
+				list-style:none;
+				width:250px;
+				height:50px;
+				margin:2px;
+				border:0px Dotted #999;
+				float:left;
+				font-size: 12px; 
+				text-transform: uppercase;
+			}
+
+			#footer{
+				position:fixed;
+				background:#fff;
+				padding:1px;
+				bottom:0px;
+				left:0px;
+				width:100px;
+				text-align:right;
+				font-size:85%;
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script>
+			$(document).ready(function()
+			{
+				$.ajax({
+					type: "GET",
+					url: "https://api.github.com/repos/Adesh/cPrograms/contents/",
+					dataType: "json",
+					success: function(result) {
+						for( i in result ) {
+							$("#repo_files").append(
+								"<li><a href='" + result[i].html_url + "' target='_blank'>" +
+								result[i].name + "</a></li>"
+							);
+							console.log("i: " + i);
+						}
+						console.log(result);
+						//$("#repo_files").append("Total Repos: " + result.length);
+					}
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="leftcolumn">
+			<ul>	
+				<li><b>'C' programs</b></li>
+				<li>Contact</li>
+			</ul>
+		</div>
+		
+		<div id="rightcolumn">
+			<div id='repo_files'>
+			</div>
+		</div>
+		
+		<div id="footer">&#169; 2014 AdeshShah</div>
 </body>
 </html>
