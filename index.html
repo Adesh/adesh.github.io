@@ -24,46 +24,21 @@
 			
 			a{
 				text-decoration:none;
-
+				width:250px;
+				height:30px;
+				margin:2px;
 			}
 			
 			a:hover{
 				text-decoration:none;
-				color:#555;
+				color:red;
 			}
 
-			#leftcolumn{ 
-				position: relative; 
-				width: 180px; 
-				padding: 0px; 
-				overflow:hidden;  
-			}
-
-			#leftcolumn ul li{ 
-				list-style:none;
-				text-align: right;
-				line-height: normal;
-				margin-bottom: 5px;
-				margin-right:5px;
-			}
-
-			#rightcolumn{
-				position: absolute;
-				top:0px; left:180px;
-				padding-left: 12px;
-				padding-top: 5px;
-				border-left: 1px #233 dotted;
-
-			}
-
-			#rightcolumn li{ 
-				list-style:none;
-				width:250px;
-				height:30px;
-				margin:2px;
-				border:0px Dotted #233;
-				float:left;
-				font-size: 12px;
+			#repo_files{
+				position: relative;
+				top:0px; left:0px;
+				padding:0px;
+				margin:0px;
 			}
 
 		</style>
@@ -79,8 +54,8 @@
 						for( i in result ) {
 							if(result[i].name != "README.md"){
 								$("#repo_files").append(
-									"<li><a href='" + result[i].html_url + "' target='_blank'>" +
-									result[i].name + "</a></li>"
+									"<a href='" + result[i].html_url + "' target='_blank'>" +
+									result[i].name + "</a>"
 								);
 								console.log("i: " + i);
 							}	
@@ -94,16 +69,7 @@
 	</head>
 
 	<body>
-		<div id="leftcolumn">
-			<ul>	
-				<li><b>'C' programs</b></li>
-				<li>Contact</li>
-			</ul>
+		<div id='repo_files'>
 		</div>
-		
-		<div id="rightcolumn">
-			<div id='repo_files'>
-			</div>
-		</div>
-</body>
+	</body>
 </html>
