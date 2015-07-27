@@ -53,7 +53,7 @@
 						for( i in result ) {
 							if(result[i].name != "README.md"){
 								$("#repo_files").append(
-									"<a href='" + result[i].download_url + "'>" +
+									"<a href='" + result[i].download_url + "' target='_BLANK'>" +
 									result[i].name + "</a>"
 								);
 								console.log("i: " + i);
