@@ -53,13 +53,14 @@
 						for( i in result ) {
 							if(result[i].name != "README.md"){
 								$("#repo_files").append(
-									"<a href='" + result[i].html_url + "' target='_blank'>" +
+									"<a href='" + result[i].download_url + "'>" +
 									result[i].name + "</a>"
 								);
 								console.log("i: " + i);
 							}	
 						}
 						console.log(result);
+						//https://raw.githubusercontent.com/adesh/cPrograms/master/StringReverse.c
 						//$("#repo_files").append("Total Repos: " + result.length);
 					}
 				});
