@@ -82,7 +82,7 @@
                     $("#repo_files").css({'height':RepoFileHeight});
                     $("#code").css({'width':CodeDivWidth, 'height':CodeDivHeight});
                 });
-                prettyPrint();
+                
                 $.ajax({
 					type: "GET",
 					url: "https://api.github.com/repos/Adesh/cPrograms/contents/",
@@ -108,7 +108,7 @@ $.ajax({
                         dataType: "text",
                         success: function(result) {
                             $(".prettyprint").html(result);
-                                                
+                            prettyPrint();                                                
  }
                     });
                    
