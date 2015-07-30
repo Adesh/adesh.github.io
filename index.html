@@ -6,8 +6,9 @@
 		<meta name="keywords" content="Adesh,C,C++">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		
-		<link rel="icon" href="pictures/favicon.ico" type="image/x-icon"/>
-		<link rel="shortcut icon" href="pictures/favicon.ico" type="image/x-icon"/>
+<!--	<link rel="icon" href="pictures/favicon.ico" type="image/x-icon"/>
+		<link rel="shortcut icon" href="pictures/favicon.ico" type="image/x-icon"/> 
+-->
 		<style>
 			html,body{
 			color:#555;
@@ -22,30 +23,67 @@
 				overflow:auto;
 			}
 			
-			a{
-				text-decoration:none;
-				width:250px;
-				margin-right:20px;
+			li.codeLink{
+                text-decoration:none;
+				list-style:none;
+                float:left;
+                background:#f1f1f1;
+                color:black;
+				margin:5px;
+                padding:5px;
+                width:180px;
 			}
 			
-			a:hover{
+			li.codeLink:hover{
 				text-decoration:none;
-				color:red;
+                color:#f1f1f1;
+                background:#757575;
 			}
 
 			#repo_files{
-				position: relative;
+				position: fixed;
 				top:0px; left:0px;
-				padding:0px;
+				width:420px;
+                border-right:1px Dotted Black;
+                padding:0px;
 				margin:0px;
+                overflow-y:scroll;
 			}
+            
+            #code{
+				position: fixed;
+				top:0px; right:0px;
+				width:420px;
+                height:420px;
+                padding:0px;
+				margin:0px;
+                overflow-y:scroll;
+            }
 
 		</style>
+        
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script>
-			$(document).ready(function()
+        <script type="text/javascript" src="http://gist-it.sudarmuthu.com/assets/prettify/prettify.js"></script>
+        <link rel="stylesheet" href="http://gist-it.sudarmuthu.com/assets/embed.css"/>
+        <link rel="stylesheet" href="http://gist-it.sudarmuthu.com/assets/prettify/prettify.css"/>
+
+        
+        <script>
+            $(document).ready(function()
 			{
-				$.ajax({
+				var CodeDivWidth = $(window).width() - $("#repo_files").width();
+                $("#code").css({'width':CodeDivWidth});
+                
+                $( window ).resize(function() {
+                    var CodeDivWidth = $(window).width() - $("#repo_files").width();
+                    var CodeDivHeight = $(window).height();
+                    var RepoFileHeight = $(window).height();
+                    
+                    $("#repo_files").css({'height':RepoFileHeight});
+                    $("#code").css({'width':CodeDivWidth, 'height':CodeDivHeight});
+                });
+                
+                $.ajax({
 					type: "GET",
 					url: "https://api.github.com/repos/Adesh/cPrograms/contents/",
 					dataType: "json",
@@ -53,17 +91,26 @@
 						for( i in result ) {
 							if(result[i].name != "README.md"){
 								$("#repo_files").append(
-									"<a href='" + result[i].download_url + "' target='_BLANK'>" +
-									result[i].name + "</a>"
+									"<li class='codeLink' id='"+result[i].download_url +"'>" + result[i].name + "</li>"
 								);
-								console.log("i: " + i);
+								//console.log("i: " + i);
 							}	
 						}
-						console.log(result);
-						//https://raw.githubusercontent.com/adesh/cPrograms/master/StringReverse.c
 						//$("#repo_files").append("Total Repos: " + result.length);
 					}
 				});
+                
+                $("#repo_files").on("click", 'li.codeLink', function() {;
+                   $.ajax({
+                        type: "GET",
+                        url: $(this).attr('id'),
+                        dataType: "text",
+                        success: function(result) {
+                            $(".prettyprint").html(result);
+                            prettyPrint();
+                        }
+                    });
+                }); 
 			});
 		</script>
 	</head>
@@ -71,5 +118,16 @@
 	<body>
 		<div id='repo_files'>
 		</div>
+		<div id='code'>
+            <div class="gist-it-gist">
+                <div class="gist-file">
+                    <div class="gist-data">
+                        <pre class="prettyprint">
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>      
+        
 	</body>
 </html>
