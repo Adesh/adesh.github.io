@@ -71,7 +71,7 @@
         <script>
             $(document).ready(function()
 			{
-				prettyPrint();                          var CodeDivWidth = $(window).width() - $("#repo_files").width();
+	                        var CodeDivWidth = $(window).width() - $("#repo_files").width();
                 $("#code").css({'width':CodeDivWidth});
                 
                 $( window ).resize(function() {
@@ -107,7 +107,7 @@
                         dataType: "text",
                         success: function(result) {
                             $(".prettyprint").html(result);
-                            //prettyPrint();
+                            prettyPrint();
                         }
                     });
                 }); 
