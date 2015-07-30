@@ -101,7 +101,8 @@
 				});
                 
                 $("#repo_files").on("click", 'li.codeLink', function() {;
-                   $.ajax({
+              $(".prettyprint").empty();    
+$.ajax({
                         type: "GET",
                         url: $(this).attr('id'),
                         dataType: "text",
