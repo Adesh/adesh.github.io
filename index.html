@@ -11,7 +11,7 @@
 -->
 		<style>
 			html,body{
-			color:#555;
+				color:#555;
 				cursor:crosshair;
 				margin:0; 
 				padding:0; 
@@ -24,78 +24,105 @@
 			}
 			
 			li.codeLink{
-                text-decoration:none;
+        text-decoration:none;
 				list-style:none;
-                float:left;
-                background:#f1f1f1;
-                color:black;
+        float:left;
+        background:#f1f1f1;
+        color:black;
 				margin:0px;
-                padding:0px;
-                width:180px;
+				padding-left:5px;
+				padding-right:0px;				
+        padding-bottom:5px;
+				padding-top:5px;
+        width:160px;
 			}
 			
 			li.codeLink:hover{
 				text-decoration:none;
-                color:#f1f1f1;
-                background:#4979D9;
+        color:#f1f1f1;
+        background:#e7a61a;
 			}
 
 			#repo_files{
 				background:#f1f1f1;
 				position: fixed;
 				top:0px; left:0px;
-				width:185px;
-                border-right:1px Dotted Black;
-                padding:0px;
+				width:180px;
+        border-right:1px Dotted Black;
+        padding:0px;
 				margin:0px;
-                overflow-y:scroll;
-                overflow-x:hidden;
+        overflow-y:scroll;
+        overflow-x :hidden;
 			}
             
-            #code{
+      #code{
 				position: fixed;
 				top:0px; right:0px;
-				width:420px;
 				padding-left:5px;
-                height:420px;
-                padding:0px;
 				margin:0px;
-                overflow-y:scroll;
-            }
+        overflow-y:scroll;	
+				overflow-x :hidden;
+ 			}
+			
+			#control{
+				position:fixed;
+				right:20px;
+				top:0px;			
+			}
+
+			#Copy2ClipBoard{
+				position:relative;
+				width:30px;
+				height:30px;
+				margin:0px;
+				float:left;			
+				background:#e7a61a;
+				border-radius: 0px 0px 10px 10px;
+				-moz-border-radius: 0px 0px 10px 10px;
+				-webkit-border-radius: 0px 0px 10px 10px;
+				border: 0px solid #000000;
+			}
+			#Copy2ClipBoard:hover{
+				height:40px;
+			}
+			input{
+		    border-width: 0px 0px 1px;
+				border-style: none none dotted;
+				border-color: -moz-use-text-color -moz-use-text-color #808080;
+				box-shadow: 0px 0px 0px #51CBEE;
+        background:#f1f1f1;
+        color:black;
+				outline: medium none;
+				padding-left:5px;
+				padding-right:0px;				
+        padding-bottom:5px;
+				padding-top:5px;
+
+			}
 
 		</style>
         
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script type="text/javascript" src="http://gist-it.sudarmuthu.com/assets/prettify/prettify.js"></script>
-        <link rel="stylesheet" href="http://gist-it.sudarmuthu.com/assets/embed.css"/>
-        <link rel="stylesheet" href="http://gist-it.sudarmuthu.com/assets/prettify/prettify.css"/>
-
-        
-        <script>
-            $(document).ready(function()
+    <script type="text/javascript" src="http://gist-it.sudarmuthu.com/assets/prettify/prettify.js"></script>
+    <link rel="stylesheet" href="http://gist-it.sudarmuthu.com/assets/embed.css"/>
+    <link rel="stylesheet" href="http://gist-it.sudarmuthu.com/assets/prettify/prettify.css"/> 
+    <script>
+      $(document).ready(function()
 			{
-	                        var CodeDivWidth = $(window).width() - $("#repo_files").width();
-                $("#code").css({'width':CodeDivWidth});
+				size();	    	
+				        
+        $( window ).resize(function() {
+		      size();
+      	});
                 
-                $( window ).resize(function() {
-                    var CodeDivWidth = $(window).width() - $("#repo_files").width();
-                    var CodeDivHeight = $(window).height();
-                    var RepoFileHeight = $(window).height();
-                    
-                    $("#repo_files").css({'height':RepoFileHeight});
-                    $("#code").css({'width':CodeDivWidth, 'height':CodeDivHeight});
-                });
-                
-                $.ajax({
+        $.ajax({
 					type: "GET",
 					url: "https://api.github.com/repos/Adesh/cPrograms/contents/",
 					dataType: "json",
 					success: function(result) {
 						for( i in result ) {
 							if(result[i].name != "README.md"){
-								$("#repo_files").append(
-									"<li class='codeLink' id='"+result[i].download_url +"'>" + result[i].name + "</li>"
-								);
+								$("#repo_files").append("<li class='codeLink' id='"+result[i].download_url +"'>" + result[i].name + "</li>");
 								//console.log("i: " + i);
 							}	
 						}
@@ -103,36 +130,55 @@
 					}
 				});
                 
-                $("#repo_files").on("click", 'li.codeLink', function() {;
-              $(".prettyprint").empty();    
-$.ajax({
-                        type: "GET",
-                        url: $(this).attr('id'),
-                        dataType: "text",
-                        success: function(result) {
-                            $(".prettyprint").html(result);
-                            prettyPrint();                                                
- }
-                    });
-                   
-                }); 
+        $("#repo_files").on("click", 'li.codeLink', function() {
+		      $(".prettyprint").empty();    				
+					$.ajax({
+		      	type: "GET",
+		        url: $(this).attr('id'),
+		        dataType: "text",
+		        success: function(result) {
+							$("#code").animate({ scrollTop: 0 }, "slow");
+		        	$(".prettyprint").html(result);
+							$(".gist-data").children("pre").removeClass("prettyprinted");
+							prettyPrint();                                                
+	 					}
+		      });                   
+        }); 
 			});
+			
+			$("#Copy2ClipBoard").on("click", 'li.codeLink', function() {
+			});
+
+
+
+			function size() {
+				var CodeDivWidth = $(window).width() - $("#repo_files").width();
+	      var CodeDivHeight = $(window).height();
+	      var RepoFileHeight = $(window).height();		                 
+	      $("#repo_files").css({'height':RepoFileHeight});
+	      $("#code").css({'width':CodeDivWidth, 'height':CodeDivHeight});
+			}
 		</script>
 	</head>
 
-	<body>
+	<body>				
 		<div id='repo_files'>
+				<li class='searchLink' id='searchBOX'>
+					<input style="width:160px;" name="name" required="" value="search" onfocus="if (this.value == 'search') {this.value = '';}" onblur="if (this.value == '') {this.value = 'search';}" type="text">		
+				</li>
 		</div>
 		<div id='code'>
-            <div class="gist-it-gist">
-                <div class="gist-file">
-                    <div class="gist-data">
-                        <pre class="prettyprint">
-                        </pre>
-                    </div>
-                </div>
-            </div>
-        </div>      
+    	<div class="gist-it-gist">
+      	<div class="gist-file">
+          <div class="gist-data">
+            <pre class="prettyprint"></pre>
+      	  </div>
+      	</div>
+     	</div>
+    </div>
+		<div id='control'>
+			<div title="" id="Copy2ClipBoard"></div>
+		</div>      
         
 	</body>
 </html>
