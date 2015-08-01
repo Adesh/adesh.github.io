@@ -103,9 +103,6 @@
 		</style>
         
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="http://gist-it.sudarmuthu.com/assets/prettify/prettify.js"></script>
-    <link rel="stylesheet" href="http://gist-it.sudarmuthu.com/assets/embed.css"/>
-    <link rel="stylesheet" href="http://gist-it.sudarmuthu.com/assets/prettify/prettify.css"/> 
     <script>
       $(document).ready(function()
 			{
@@ -131,16 +128,15 @@
 				});
                 
         $("#repo_files").on("click", 'li.codeLink', function() {
-		      $(".prettyprint").empty();    				
+		      $("#code").empty();    				
 					$.ajax({
 		      	type: "GET",
 		        url: $(this).attr('id'),
 		        dataType: "text",
 		        success: function(result) {
 							$("#code").animate({ scrollTop: 0 }, "slow");
-		        	$(".prettyprint").html(result);
-							$(".gist-data").children("pre").removeClass("prettyprinted");
-							prettyPrint();                                                
+		        	$("#codet").html(result);
+			                                                
 	 					}
 		      });                   
         }); 
@@ -168,14 +164,8 @@
 				</li>
 		</div>
 		<div id='code'>
-    	<div class="gist-it-gist">
-      	<div class="gist-file">
-          <div class="gist-data">
-            <pre class="prettyprint"></pre>
-      	  </div>
-      	</div>
-     	</div>
-    </div>
+
+    		</div>
 		<div id='control'>
 			<div title="" id="Copy2ClipBoard"></div>
 		</div>      
