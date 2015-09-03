@@ -45,17 +45,17 @@
             $( window ).resize(function() { size(); });
             
             $.ajax({
-				type: "GET",
-				url: "https://api.github.com/repos/Adesh/Programing_Concepts/contents/",
-				dataType: "json",
-				success: function(result) {
-					for( i in result ) {
-						if(result[i].name != "README.md"){
-							$("body").append( "<a class='menu' id='" + result[i].download_url + "'>" + result[i].name.substring(0,result[i].name.indexOf(".txt")) + "</a>" );
-							}	
-						}
-					}
-			});
+		type: "GET",
+		url: "https://api.github.com/repos/Adesh/Programing_Concepts/contents/",
+		dataType: "json",
+		success: function(result) {
+			for( i in result ) {
+				if(result[i].name != "README.md"){
+					$("body").append( "<a class='menu' id='" + result[i].download_url + "'>" + result[i].name.substring(0,result[i].name.indexOf(".txt")) + "</a>" );
+				}	
+			}
+		}
+	    });
             
             $("body").on("click", '.menu', function() {
                 $("body").html("Loading...");
@@ -67,9 +67,7 @@
                         process(result);
                     }
                 });                  
-            }); 
-            
-
+            });
         });
         
         function process(_result){
