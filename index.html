@@ -1,22 +1,23 @@
 <html>
 <head>
 <title>concepts of programming</title>
-<meta name="description" content="'C, C++' concepts">
-<meta name="keywords" content="Adesh,C,C++,OOP">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<style>
-	html,body{
-		cursor:crosshair;
-		margin:0px; 
-		padding:5px; 
-		font-size:14px;
+		<meta name="description" content="'C, C++' concepts">
+		<meta name="keywords" content="Adesh,C,C++,OOP">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<style>
+			html,body{
+				cursor:crosshair;
+				margin:0px; 
+				padding:5px; 
+				font-size:14px;
                 font-family: arial, sans-serif;
                 word-wrap: break-word;
-	}
-	body { 
-		overflow:auto;
-	}
-       .menu{
+			}
+			body { 
+				overflow:auto;
+			}
+            .menu{
                 width:70px;
                 height:70px;
                 line-height: 70px;
@@ -27,35 +28,38 @@
                 margin-left:40px;
                 margin-top:40px;
             }
-        .menu:hover{
-                background:#00FFFF;
-        }   
-        h3 {
+            .menu:hover{
+                    background:#00FFFF;
+            }   
+            h3 {
+                
                 background:#FFFF00;
-        }
-        pre {
+            }
+            pre {
                 background:#F2F2F2;
-        }
-</style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script>
+            }
+		</style>
+        
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>
         $(document).ready(function()
         {
             size();	    					        
             $( window ).resize(function() { size(); });
             
             $.ajax({
-		type: "GET",
-		url: "https://api.github.com/repos/Adesh/Programing_Concepts/contents/",
-		dataType: "json",
-		success: function(result) {
-			for( i in result ) {
-				if(result[i].name != "README.md"){
-					$("body").append( "<a class='menu' id='" + result[i].download_url + "'>" + result[i].name.substring(0,result[i].name.indexOf(".txt")) + "</a>" );
-				}	
-			}
-		}
-	    });
+				type: "GET",
+				url: "https://api.github.com/repos/Adesh/Programing_Concepts/contents/",
+				dataType: "json",
+				success: function(result) {
+					for( i in result ) {
+						if(result[i].name != "README.md"){
+							$("body").html( "<a class='menu' id='" + result[i].download_url + "'>" + result[i].name.substring(0,result[i].name.indexOf(".txt")) + "</a>" );
+						}	
+					}
+                    $("body").append("<div style='clear:both;font-size:10px;color:4e4e4e;'><br/><br/>'There are no secrets to success. It is the result of preparation, hard work, and learning from failure.' <br/>-Colin Powell</div>");
+				}
+			});
             
             $("body").on("click", '.menu', function() {
                 $("body").html("Loading...");
@@ -67,7 +71,9 @@
                         process(result);
                     }
                 });                  
-            });
+            }); 
+            
+
         });
         
         function process(_result){
@@ -75,7 +81,8 @@
         }
         
         function size(){}
-</script>
+        
+        </script>
 </head>
 <body>
 </body>
