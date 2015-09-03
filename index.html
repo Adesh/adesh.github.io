@@ -1,174 +1,84 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<title>See through 'C'</title>
-		<meta name="description" content="Adesh Shah: 'C' programs">
-		<meta name="keywords" content="Adesh,C,C++">
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		
-<!--	<link rel="icon" href="pictures/favicon.ico" type="image/x-icon"/>
-		<link rel="shortcut icon" href="pictures/favicon.ico" type="image/x-icon"/> 
--->
-		<style>
-			html,body{
-				color:#555;
-				cursor:crosshair;
-				margin:0; 
-				padding:0; 
-				font-size:14px;
-			}
-
-			body { 
-				font-family: arial, sans-serif; 
-				overflow:auto;
-			}
-			
-			li.codeLink{
-        text-decoration:none;
-				list-style:none;
-        float:left;
-        background:#f1f1f1;
-        color:black;
-				margin:0px;
-				padding-left:5px;
-				padding-right:0px;				
-        padding-bottom:5px;
-				padding-top:5px;
-        width:160px;
-			}
-			
-			li.codeLink:hover{
-				text-decoration:none;
-        color:#f1f1f1;
-        background:#e7a61a;
-			}
-
-			#repo_files{
-				background:#f1f1f1;
-				position: fixed;
-				top:0px; left:0px;
-				width:180px;
-        border-right:1px Dotted Black;
-        padding:0px;
-				margin:0px;
-        overflow-y:scroll;
-        overflow-x :hidden;
-			}
+<html>
+<head>
+<title>concepts of programming</title>
+<meta name="description" content="'C, C++' concepts">
+<meta name="keywords" content="Adesh,C,C++,OOP">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+	html,body{
+		cursor:crosshair;
+		margin:0px; 
+		padding:5px; 
+		font-size:14px;
+                font-family: arial, sans-serif;
+                word-wrap: break-word;
+	}
+	body { 
+		overflow:auto;
+	}
+       .menu{
+                width:70px;
+                height:70px;
+                line-height: 70px;
+                text-align:center;
+                background:#FFFF00;
+                text-decoration:none;
+                float:left;
+                margin-left:40px;
+                margin-top:40px;
+            }
+        .menu:hover{
+                background:#00FFFF;
+        }   
+        h3 {
+                background:#FFFF00;
+        }
+        pre {
+                background:#F2F2F2;
+        }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+        $(document).ready(function()
+        {
+            size();	    					        
+            $( window ).resize(function() { size(); });
             
-      #code{
-				position: fixed;
-				top:0px; right:0px;
-				padding-left:5px;
-				margin:0px;
-        overflow-y:scroll;	
-				overflow-x :hidden;
- 			}
-			
-			#control{
-				position:fixed;
-				right:20px;
-				top:0px;			
-			}
-
-			#Copy2ClipBoard{
-				position:relative;
-				width:30px;
-				height:30px;
-				margin:0px;
-				float:left;			
-				background:#e7a61a;
-				border-radius: 0px 0px 10px 10px;
-				-moz-border-radius: 0px 0px 10px 10px;
-				-webkit-border-radius: 0px 0px 10px 10px;
-				border: 0px solid #000000;
-			}
-			#Copy2ClipBoard:hover{
-				height:40px;
-			}
-			input{
-		    border-width: 0px 0px 1px;
-				border-style: none none dotted;
-				border-color: -moz-use-text-color -moz-use-text-color #808080;
-				box-shadow: 0px 0px 0px #51CBEE;
-        background:#f1f1f1;
-        color:black;
-				outline: medium none;
-				padding-left:5px;
-				padding-right:0px;				
-        padding-bottom:5px;
-				padding-top:5px;
-
-			}
-
-		</style>
-        
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>
-      $(document).ready(function()
-			{
-				size();	    	
-				        
-        $( window ).resize(function() {
-		      size();
-      	});
-                
-        $.ajax({
-					type: "GET",
-					url: "https://api.github.com/repos/Adesh/cPrograms/contents/",
-					dataType: "json",
-					success: function(result) {
-						for( i in result ) {
-							if(result[i].name != "README.md"){
-								$("#repo_files").append("<li class='codeLink' id='"+result[i].download_url +"'>" + result[i].name + "</li>");
-								//console.log("i: " + i);
+            $.ajax({
+				type: "GET",
+				url: "https://api.github.com/repos/Adesh/Programing_Concepts/contents/",
+				dataType: "json",
+				success: function(result) {
+					for( i in result ) {
+						if(result[i].name != "README.md"){
+							$("body").append( "<a class='menu' id='" + result[i].download_url + "'>" + result[i].name.substring(0,result[i].name.indexOf(".txt")) + "</a>" );
 							}	
 						}
-						//$("#repo_files").append("Total Repos: " + result.length);
 					}
-				});
-                
-        $("#repo_files").on("click", 'li.codeLink', function() {
-		      $("#code").empty();    				
-					$.ajax({
-		      	type: "GET",
-		        url: $(this).attr('id'),
-		        dataType: "text",
-		        success: function(result) {
-							$("#code").animate({ scrollTop: 0 }, "slow");
-		        	$("#code").html("<pre>"+result+"</pre>");
-			                                                
-	 					}
-		      });                   
-        }); 
 			});
-			
-			$("#Copy2ClipBoard").on("click", 'li.codeLink', function() {
-			});
+            
+            $("body").on("click", '.menu', function() {
+                $("body").html("Loading...");
+                $.ajax({
+                    type: "GET",
+                    url: $(this).attr('id'),
+                    dataType: "text",
+                    success: function(result) {
+                        process(result);
+                    }
+                });                  
+            }); 
+            
 
-
-
-			function size() {
-				var CodeDivWidth = $(window).width() - $("#repo_files").width();
-	      var CodeDivHeight = $(window).height();
-	      var RepoFileHeight = $(window).height();		                 
-	      $("#repo_files").css({'height':RepoFileHeight});
-	      $("#code").css({'width':CodeDivWidth, 'height':CodeDivHeight});
-			}
-		</script>
-	</head>
-
-	<body>				
-		<div id='repo_files'>
-				<li class='searchLink' id='searchBOX'>
-					<input style="width:160px;" name="name" required="" value="search" onfocus="if (this.value == 'search') {this.value = '';}" onblur="if (this.value == '') {this.value = 'search';}" type="text">		
-				</li>
-		</div>
-		<div id='code'>
-
-    		</div>
-		<div id='control'>
-			<div title="" id="Copy2ClipBoard"></div>
-		</div>      
+        });
         
-	</body>
+        function process(_result){
+            $("body").html( _result );
+        }
+        
+        function size(){}
+</script>
+</head>
+<body>
+</body>
 </html>
