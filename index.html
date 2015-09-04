@@ -31,8 +31,7 @@
             .menu:hover{
                     background:#00FFFF;
             }   
-            h3 {
-                
+            h3 {    
                 background:#FFFF00;
             }
             pre {
@@ -54,12 +53,12 @@
 				success: function(result) {
 					for( i in result ) {
 						if(result[i].name != "README.md"){
-							$("body").html( "<a class='menu' id='" + result[i].download_url + "'>" + result[i].name.substring(0,result[i].name.indexOf(".txt")) + "</a>" );
+							$("body").append( "<a class='menu' id='" + result[i].download_url + "'>" + result[i].name.substring(0,result[i].name.indexOf(".txt")) + "</a>" );
 						}	
 					}
                     $("body").append("<div style='clear:both;font-size:10px;color:4e4e4e;'><br/><br/>'There are no secrets to success. It is the result of preparation, hard work, and learning from failure.' <br/>-Colin Powell</div>");
 				}
-			});
+            });
             
             $("body").on("click", '.menu', function() {
                 $("body").html("Loading...");
@@ -72,18 +71,15 @@
                     }
                 });                  
             }); 
+        
+            function process(_result){
+                $("body").html( _result );
+            }
             
-
+            function size(){}
         });
-        
-        function process(_result){
-            $("body").html( _result );
-        }
-        
-        function size(){}
-        
         </script>
-</head> 
+</head>
 <body>
 </body>
 </html>
