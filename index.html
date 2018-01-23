@@ -14,6 +14,7 @@
 			-moz-background-size: cover;
 			-o-background-size: cover;
 			background-size: cover;*/
+			background-color: #eee;
 		}
 		html,body{
 			display:flex;
@@ -25,6 +26,9 @@
 			-webkit-flex-direction: column;
 			-ms-flex-direction: column;
 			flex-direction: column;
+		}
+		.main {
+			background-color: #fff;
 		}
 		.flex-container {
 			    display: -ms-flexbox;
@@ -69,7 +73,7 @@
 
 		.t{
 			margin-bottom:15px !important;
-			margin-left:0px !important; 
+			margin-left:5px !important; 
 			margin-right:0px !important; 
 			padding:0px !important;
 			border-radius: 2px;
@@ -89,6 +93,7 @@
 		}
 		.subbody{
 			padding: 5px;
+			margin-bottom: 15px;
 		}
 		.subbody .tagsUl{
 			list-style-type: disc;
@@ -100,6 +105,18 @@
 		    content: "\2022";
 		    margin: 0 6px 0 4px;
 		}
+
+
+		.subbody .tagLiNewLine{
+			display: block;
+		}
+		.subbody .tagLiNewLine::before {
+		    content: "\2022";
+		    margin: 0 6px 0 4px;
+		}
+
+
+
 		.subbody .tagLi:first-child::before {
 		    content: "";
 		    margin: 0 6px 0 4px;
@@ -133,83 +150,207 @@
 			padding: 10px;
 		}
 		
+		.subbody {
+
+		}
+		.subbody .subbodyHeader {
+			font-weight: bold;
+			color: grey;
+		}
+		.subbody .subbodyDuration {
+			font-size: 10px;
+			color: grey;
+		}
+		.subbody .subbodyOrgInfo {
+			font-style: italic;
+			color: grey;
+		}
+		.subbody .subbodyDuties {
+
+		}
+
 	</style>
 </head>
 <body>
-<div class="container col s6">
+<div class='row'>	
+	<div class="col s2"></div>
 	
-	<div class="hoverable introduction">
-          
-          <div class="card-image">
-            <div class="card-title">
-            	<img class="dp" src="dp.jpg"/>
-            	<div class="white-text"><h5>Adesh Shah</h5></div>
-            </div>
-          </div>
-          
-          <div class="card-content">
-            +4.5 years of Software Engineering experience from MNCs and startup,
-			master’s degree in CS with distinction. Interested in exploring emerging
-			tech and its social impact. New comer to Canada. And a forever learner.
-          </div>
-         	
-          <div class="card-action">
-	        	<a href="#">LinkedIn</a> <a href="#">Github</a> <a href="#">Facebook</a>
-	      </div> 	 
-    </div>
-
-	<div class='row resume'>
+	<div class="container col s8 main z-depth-2">
 		
-		<div class='col s7'>
-		  	<div class='row hoverable t'>	
-		  		<div class="blue-text header1">EXPERIENCE</div>
-	      		<div class="subbody">subbody</div>
-	     	</div>
+		<div class="hoverable introduction">
+	          
+	          <div class="card-image">
+	            <div class="card-title">
+	            	<img class="dp" src="dp.jpg"/>
+	            	<div class="white-text"><h5>Adesh Shah</h5></div>
+	            </div>
+	          </div>
+	          
+	          <div class="card-content">
+	            +4.5 years of Software Engineering experience from MNCs and startup,
+				master’s degree in CS with distinction. Interested in exploring emerging
+				tech and its social impact. New comer to Canada. And a forever learner.
+	          </div>
+	         	
+	          <div class="card-action">
+		        	<a href="#">LinkedIn</a> <a href="#">Github</a> <a href="#">Facebook</a>
+		      </div> 	 
+	    </div>
 
-			<div class='row hoverable t'>    
-				<div class="blue-text header1">EDUCATION</div>
-	      		<div class="subbody">subbody</div>
-	     	</div>
-		</div>
+		<div class='row resume'>
+			
+			<div class='col s7'>
+			  	<div class='row hoverable t'>	
+			  		<div class="blue-text header1">EXPERIENCE</div>
+		      		
+		      		<div class="subbody">
+		      			<div class="subbodyHeader">Infostretch Labs, India — Sr Software Engineer</div>
+		      			<div class="subbodyDuration">MARCH 2017 - PRESENT</div>
+		      			<div class="subbodyOrgInfo">IS Labs explores business opportunities in emerging tech</div>
+		      			<div class="subbodyDuties">
+		      				<li>Tinkering emerging tech like Machine Learning, Blockchain, Alexa, etc</li>
+							<li>Making quick POCs, writing technical insights, and architecting solutions</li>
+							<li>Exposure: Alexa, Blockchain, Hyperledger Fabric, JavaScript, node.js</li>
+		      			</div>
+		      		</div>
 
-		<div class='col s5'>
-		  	<div class='row hoverable t'>	
-		  		<div class="blue-text header1">SKILLS</div>
-	      		<div class="subbody">
-	      			<ul class="tagsUl">
-	      				<li class="tagLi">JavaScript</li>
-	      				<li class="tagLi">Node.Js</li>
-	      				<li class="tagLi">React-Native</li>
-	      				<li class="tagLi">Software Programming</li>	
-	      				<li class="tagLi">Scrum</li>
-	      				<li class="tagLi">Agile</li>
-	      			</ul>
-	      		</div>
-	     	</div>
+		      		<div class="subbody">
+		      			<div class="subbodyHeader">Infostretch Labs, India — Sr Software Engineer</div>
+		      			<div class="subbodyDuration">MARCH 2017 - PRESENT</div>
+		      			<div class="subbodyOrgInfo">IS Labs explores business opportunities in emerging tech</div>
+		      			<div class="subbodyDuties">
+		      				<li>Tinkering emerging tech like Machine Learning, Blockchain, Alexa, etc</li>
+							<li>Making quick POCs, writing technical insights, and architecting solutions</li>
+							<li>Exposure: Alexa, Blockchain, Hyperledger Fabric, JavaScript, node.js</li>
+		      			</div>
+		      		</div>
 
-			<div class='row hoverable t'>    
-				<div class="blue-text header1">CERTIFICATES</div>
-	      		<div class="subbody">subbody</div>
-	     	</div>
-	     	
-	     	<div class='row hoverable t'>    
-	     		<div class="blue-text header1">VOLUNTEERING</div>
-	      		<div class="subbody">subbody</div>
-	     	</div>
+		      		<div class="subbody">
+		      			<div class="subbodyHeader">Infostretch Labs, India — Sr Software Engineer</div>
+		      			<div class="subbodyDuration">MARCH 2017 - PRESENT</div>
+		      			<div class="subbodyOrgInfo">IS Labs explores business opportunities in emerging tech</div>
+		      			<div class="subbodyDuties">
+		      				<li>Tinkering emerging tech like Machine Learning, Blockchain, Alexa, etc</li>
+							<li>Making quick POCs, writing technical insights, and architecting solutions</li>
+							<li>Exposure: Alexa, Blockchain, Hyperledger Fabric, JavaScript, node.js</li>
+		      			</div>
+		      		</div>
 
-	     	<div class='row hoverable t'>    
-	     		<div class="blue-text header1">LANGUAGES</div>
-	      		<div class="subbody">
-	      			<ul class="tagsUl">
-	      				<li class="tagLi">English</li>
-	      				<li class="tagLi">Hindi</li>
-	      				<li class="tagLi">Gujarati</li>
-	      				<li class="tagLi">French</li>	
-	      			</ul>
-	      		</div>
-	     	</div> 
+		      		<div class="subbody">
+		      			<div class="subbodyHeader">Infostretch Labs, India — Sr Software Engineer</div>
+		      			<div class="subbodyDuration">MARCH 2017 - PRESENT</div>
+		      			<div class="subbodyOrgInfo">IS Labs explores business opportunities in emerging tech</div>
+		      			<div class="subbodyDuties">
+		      				<li>Tinkering emerging tech like Machine Learning, Blockchain, Alexa, etc</li>
+							<li>Making quick POCs, writing technical insights, and architecting solutions</li>
+							<li>Exposure: Alexa, Blockchain, Hyperledger Fabric, JavaScript, node.js</li>
+		      			</div>
+		      		</div>
+		     	</div>
+
+				<div class='row hoverable t'>    
+					<div class="blue-text header1">EDUCATION</div>
+		      		<div class="subbody">
+		      			<div class="subbodyHeader">Master of Technology, Computer Science Engineering</div>
+		      			<div class="subbodyDuration">2012 - 2014, 7.63/10 - First Class with Distinction</div>
+		      			<div class="subbodyOrgInfo">Nirma University, India</div>
+		      			<div class="subbodyDuties">
+		      				<li>Thesis: Gesture Recognition using Arduino micro controller, IMU
+								sensors and Machine Learning</li>
+							<li>Subjects: Signal Theory, Algorithms Analysis, Machine Learning</li>
+		      			</div>
+		      		</div>
+
+		      		<div class="subbody">
+		      			<div class="subbodyHeader">Bachelor of Engineering, Computer Engineering</div>
+		      			<div class="subbodyDuration">2007 - 2011, 63.23%</div>
+		      			<div class="subbodyOrgInfo">Gujarat University, India</div>
+		      			<div class="subbodyDuties">
+		      				<li>Microsoft Student Partner - promoting Microsoft tech, arranging
+							meetups</li>
+		      			</div>
+		      		</div>
+
+		     	</div>
+			</div>
+
+			<div class='col s5'>
+			  	<div class='row hoverable t'>	
+			  		<div class="blue-text header1">SKILLS</div>
+		      		<div class="subbody">
+		      			<ul class="tagsUl">
+		      				<li class="tagLiNewLine">JavaScript</li>
+		      				<li class="tagLiNewLine">Node.Js</li>
+		      				<li class="tagLiNewLine">React-Native</li>
+		      				<li class="tagLiNewLine">Software Programming</li>	
+		      				<li class="tagLiNewLine">Scrum</li>
+		      				<li class="tagLiNewLine">Agile</li>
+		      			</ul>
+		      		</div>
+		     	</div>
+
+				<div class='row hoverable t'>    
+					<div class="blue-text header1">CERTIFICATES</div>
+		      		<div class="subbody">
+		      			<ul class="tagsUl">
+							<li class="tagLiNewLine">Machine Learning - <a>Coursera</a></li>
+							<li class="tagLiNewLine">React Native - <a>Udemy</a></li>
+							<li class="tagLiNewLine">French Language - A1 <a>CIEP</a></li>
+							<li class="tagLiNewLine">Python - <a>Coursera</a></li>
+							<li class="tagLiNewLine">Scrum - <a></a></li>
+						</ul>
+		      		</div>
+		     	</div>
+		     	
+		     	<div class='row hoverable t'>    
+		     		<div class="blue-text header1">VOLUNTEERING</div>
+		      		<div class="subbody">
+		      			
+		      			<div class="subbody">
+		      				<div class="subbodyHeader">Talk on Robotics</div>
+		      				<div class="subbodyDuration">AUG 15</div>
+		      				<div class="subbodyOrgInfo"></div>
+		      				<div class="subbodyDuties">
+		      					<li>Delivered lecture (Audience -
+									300 students) on Arduino
+									μController, sensors,
+									raspberry pi</li>
+							</div>
+		      			</div>
+
+		      			<div class="subbody">
+		      				<div class="subbodyHeader">Volunteer — Yuva Unstoppable</div>
+		      				<div class="subbodyDuration">2011</div>
+		      				<div class="subbodyOrgInfo"></div>
+		      				<div class="subbodyDuties">
+		      					<li>Coordination and work with
+									10 students to teach basic
+									maths to the underprivileged
+									kids (25-30 kids), mostly on
+									weekends</li>
+								</div>
+		      			</div>
+
+		      		</div>
+		     	</div>
+
+		     	<div class='row hoverable t'>    
+		     		<div class="blue-text header1">LANGUAGES</div>
+		      		<div class="subbody">
+		      			<ul class="tagsUl">
+		      				<li class="tagLi">English</li>
+		      				<li class="tagLi">Hindi</li>
+		      				<li class="tagLi">Gujarati</li>
+		      				<li class="tagLi">French (Basic)</li>	
+		      			</ul>
+		      		</div>
+		     	</div> 
+			</div>
 		</div>
 	</div>
+	
+	<div class="col s2"></div>
 </div>
+
 </body>
 </html>
