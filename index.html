@@ -25,18 +25,19 @@
 
     <style type="text/css">
       html, body { 
+        font-size: 13px;
         height: 100%; 
         width: 100%; 
         overflow: hidden;
         background-color:  white;
         margin: 0;
-        align-items: :center;
+        align-items: center;
         justify-content: center;
         color: black;
-        font-family: 'Roboto', sans-serif;
+        font-family: monospace, 'Roboto', sans-serif;
       }
       a, a:hover{
-        font-family: 'Roboto', sans-serif;
+        font-family: monospace, 'Roboto', sans-serif;
         color:cornflowerblue;
         text-decoration: none;
       }
@@ -65,7 +66,7 @@
         align-items: center;
         }
 
-      .flex-item:{
+      .flex-item{
         -webkit-order: 0;
         -ms-flex-order: 0;
         order: 0;
@@ -76,8 +77,9 @@
         -ms-flex-item-align: auto;
         align-self: auto;
       }
-      .pitch:{
-        margin-left: :30;
+      .pitch{
+        width:400px;
+        padding-left: 50;
         -webkit-justify-content: center;
         -ms-flex-pack: center;
         justify-content: center;
@@ -89,9 +91,13 @@
         align-items: center;
       }
       .imgScreenShot{
-        max-width:300px;
+        max-width:250px;
         height:auto;
         display:block;
+      }
+      p.about,
+      p.footer {
+        font-size: 11px;
       }
 	</style>
   
@@ -112,27 +118,37 @@
             </td>
             <td>
                <div class="pitch">
-                <h3>Chess<h3/>
-                <h4>RealTime, Robust &amp; Minmal</h4>
+                <h4>Chess</h4>
+                <p>RealTime, Robust &amp; Minmal</p>
+
+                <p class="about">A promise to provide the best chess game play experience, listening to feedbacks, and making a class apart Chess app. I intend to write a modern Chess app which can be categorised as one of the most efficient, customizable and yet minimal. This is an open-source (and close to heart) project.</p>
+
+                So far...
                 <ul>
                   <li>One of the most advance Chess engine (2k+ elo rating)</li>
                   <li>Lightweight</li>
-                  <li>Saves power as the processing happens on the server</li>
-                  <li>Two player feature coming soon (by November 1st, 2016)</li>
                 </ul>
+
+                Work in progress...
+                <ul>
+                  <li>Feedback / Feature request</li>
+                  <li>2 Player real time play with in app chat</li>
+                  <li>Social Authentication, Game rooms</li>
+                  <li>Save Games</li>
+                  <li>Notification</li>
+                </ul>
+
+                <p class="footer">- <a href="https://www.linkedin.com/in/adeshshah/">Aadesh</a> | <a href="https://www.github.com/Adesh/Chess">Github</a> | <span style="color:red;">&hearts;</span> from Toronto</p>
+
+                <a href='https://play.google.com/store/apps/details?id=com.euristico.chess&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+                  <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="129" height="50"/></a>
+
               </div>
             </td>
           </tr>
         </table>
         
       </div>
-      
-      <div class='flex-item'>
-        <a href='https://play.google.com/store/apps/details?id=com.euristico.chess&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
-          <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="258" height="100"/>
-        </a>
-      </div>
-
     </div>
   </body>
 </html>
